@@ -18,9 +18,6 @@ const cellClick = function(cell) {
         cell.textContent = "o";
     }
 
-    //The cell clicked should no longer be clickable
-    cell.removeEventListener("click", cellClick);
-
     //Switch players
     player++;
 }
@@ -31,40 +28,50 @@ const play = function() {
     player = 0;
 
     //Create an event listener for each column
+    //Removes listeners once called
     //Call cellClick and pass the cell argument
-    cell1.addEventListener("click", () => {
+    cell1.addEventListener("click", cell1Clicked = () => {
+        cell1.removeEventListener("click", cell1Clicked);
         cellClick(cell1);
     });
 
-    cell2.addEventListener("click", () => {
+    cell2.addEventListener("click", cell2Clicked =() => {
+        cell2.removeEventListener("click", cell2Clicked);
         cellClick(cell2);
     });
 
-    cell3.addEventListener("click", () => {
+    cell3.addEventListener("click", cell3Clicked =() => {
+        cell3.removeEventListener("click", cell3Clicked);
         cellClick(cell3);
     });
 
-    cell4.addEventListener("click", () => {
+    cell4.addEventListener("click", cell4Clicked =() => {
+        cell4.removeEventListener("click", cell4Clicked);
         cellClick(cell4);
     });
 
-    cell5.addEventListener("click", () => {
+    cell5.addEventListener("click", cell5Clicked =() => {
+        cell5.removeEventListener("click", cell5Clicked);
         cellClick(cell5);
     });
 
-    cell6.addEventListener("click", () => {
+    cell6.addEventListener("click", cell6Clicked =() => {
+        cell6.removeEventListener("click", cell6Clicked);
         cellClick(cell6);
     });
 
-    cell7.addEventListener("click", () => {
+    cell7.addEventListener("click", cell7Clicked =() => {
+        cell7.removeEventListener("click", cell7Clicked);
         cellClick(cell7);
     });
 
-    cell8.addEventListener("click", () => {
+    cell8.addEventListener("click", cell8Clicked =() => {
+        cell8.removeEventListener("click", cell8Clicked);
         cellClick(cell8);
     });
 
-    cell9.addEventListener("click", () => {
+    cell9.addEventListener("click", cell9Clicked =() => {
+        cell9.removeEventListener("click", cell9Clicked);
         cellClick(cell9);
     });
 }
