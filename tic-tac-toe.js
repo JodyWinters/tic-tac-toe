@@ -16,9 +16,10 @@ for (let section of sections) {
     leftSide.push(section.querySelector("div"));
 }
 
+//variable for if the game has been won
+let gameOver = false;
 //This checks if the game is over
 const checkEnd = function() {
-    let gameOver = false;
 
     //Check for any vertical wins
     for (let cell of topSide) {
@@ -26,6 +27,7 @@ const checkEnd = function() {
             if (cell.textContent === cells[cells.indexOf(cell) + topSide.length].textContent &&
             cell.textContent === cells[cells.indexOf(cell) + (topSide.length * 2)].textContent) {
                 console.log("vertical");
+                gameOver = true;
             }
         }
     }
@@ -36,6 +38,7 @@ const checkEnd = function() {
             if (cell.textContent === cells[cells.indexOf(cell) + 1].textContent &&
             cell.textContent === cells[cells.indexOf(cell) + 2].textContent) {
                 console.log("horizontal");
+                gameOver = true;
             }
         }
     }
@@ -46,6 +49,7 @@ const checkEnd = function() {
         if (topCell.textContent === cells[cells.indexOf(topCell) + (topSide.length - 1)].textContent &&
         topCell.textContent === cells[cells.indexOf(topCell) + ((topSide.length - 1) * 2)].textContent) {
             console.log("diagonal left");
+            gameOver = true;
         }
     }
 
@@ -55,8 +59,13 @@ const checkEnd = function() {
         if (leftCell.textContent === cells[cells.indexOf(leftCell) + (leftSide.length + 1)].textContent &&
         leftCell.textContent === cells[cells.indexOf(leftCell) + ((leftSide.length + 1) * 2)].textContent) {
             console.log("diagonal right");
+            gameOver = true;
         }
-    }    
+    }
+
+    if (player === 9 && gameOver === false) {
+      console.log("Tie Game");
+    }
 }
 
 //This should run when an empty cell is clicked
@@ -68,11 +77,12 @@ const cellClick = function(cell) {
     } else {
         cell.textContent = "o";
     }
+    //Switch players
+    player++;
 
     checkEnd();
 
-    //Switch players
-    player++;
+
 }
 
 //This starts a new game
