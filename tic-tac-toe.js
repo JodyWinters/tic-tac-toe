@@ -16,6 +16,8 @@ for (let section of sections) {
     leftSide.push(section.querySelector("div"));
 }
 
+//storing paragraph in a variable
+let winnerTie = document.querySelector(".winnerTie");
 //variable for if the game has been won
 let gameOver = false;
 
@@ -34,7 +36,12 @@ const gameEnd = function(isDraw, firstCell, direction) {
     if (isDraw === true) {
         for (cell of cells) {
             cell.style.color = "red";
+            winnerTie.textContent = "Tie Game";
         }
+    }else if(isDraw === false && [player % 2] === 0) {
+      winnerTie.textContent = "Winner: X's";
+    }else if(isDraw === false && [player % 2] === 1){
+      winnerTie.textContent = "Winner: O's";
     }
 }
 
