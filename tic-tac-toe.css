@@ -27,7 +27,7 @@ main {
   height: 165px;
 }
 
-.firstRow, .secondRow {
+#cell1, #cell2, #cell3, #cell4, #cell5, #cell6 {
     border-bottom: 2px solid black;
 }
 
@@ -50,4 +50,9 @@ button {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+}
+
+.winnerTie {
+  font-size: 30px;
+  text-align: center;
 }

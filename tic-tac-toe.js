@@ -38,8 +38,14 @@ const gameEnd = function(isDraw, firstCell, direction) {
             cell.style.color = "red";
             winnerTie.textContent = "Tie Game";
         }
-      }
+    }else if(isDraw === false && (turns % 2 === 0)) {
+      winnerTie.textContent = "Winner is: " + secondChar +"'s";
+      winnerTie.style.color = "green";
+    }else if(isDraw === false && (turns % 2 === 1)) {
+      winnerTie.textContent = "Winner is: " + firstChar +"'s";
+      winnerTie.style.color = "green";
     }
+  }
 
 //This checks if the game is over
 const checkEnd = function() {
@@ -104,6 +110,7 @@ const checkEnd = function() {
 
     if (turns === 9 && gameOver === false) {
       console.log("Tie Game");
+
       gameEnd(true);
     }
 }
@@ -129,12 +136,12 @@ const play = function() {
     //If it is 0, "x" goes first
 
     if (Math.floor(Math.random() * Math.floor(2)) === 0) {
-        firstChar = "x";
-        secondChar = "o"
+        firstChar = "X";
+        secondChar = "O"
     //If it is 1, "o" goes first
     } else {
-        firstChar = "o";
-        secondChar = "x";
+        firstChar = "O";
+        secondChar = "X";
     }
 
     //Create a turns variable that tracks the amount of turns
