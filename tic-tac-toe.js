@@ -38,12 +38,8 @@ const gameEnd = function(isDraw, firstCell, direction) {
             cell.style.color = "red";
             winnerTie.textContent = "Tie Game";
         }
-    }else if(isDraw === false && [player % 2] === 0) {
-      winnerTie.textContent = "Winner: X's";
-    }else if(isDraw === false && [player % 2] === 1){
-      winnerTie.textContent = "Winner: O's";
+      }
     }
-}
 
 //This checks if the game is over
 const checkEnd = function() {
