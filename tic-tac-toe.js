@@ -18,6 +18,26 @@ for (let section of sections) {
 
 //variable for if the game has been won
 let gameOver = false;
+
+//make function to remove events after win or draw
+const gameEnd = function(isDraw, firstCell, direction) {
+    cells[0].removeEventListener("click", cell1Clicked);
+    cells[1].removeEventListener("click", cell2Clicked);
+    cells[2].removeEventListener("click", cell3Clicked);
+    cells[3].removeEventListener("click", cell4Clicked);
+    cells[4].removeEventListener("click", cell5Clicked);
+    cells[5].removeEventListener("click", cell6Clicked);
+    cells[6].removeEventListener("click", cell7Clicked);
+    cells[7].removeEventListener("click", cell8Clicked);
+    cells[8].removeEventListener("click", cell9Clicked);
+
+    if (isDraw === true) {
+        for (cell of cells) {
+            cell.style.color = "red";
+        }
+    }
+}
+
 //This checks if the game is over
 const checkEnd = function() {
 
@@ -28,7 +48,7 @@ const checkEnd = function() {
             cell.textContent === cells[cells.indexOf(cell) + (topSide.length * 2)].textContent) {
                 console.log("vertical");
                 gameOver = true;
-                gameEnd();
+                gameEnd(false, cell, "vertical",);
             }
         }
     }
@@ -40,7 +60,7 @@ const checkEnd = function() {
             cell.textContent === cells[cells.indexOf(cell) + 2].textContent) {
                 console.log("horizontal");
                 gameOver = true;
-                gameEnd();
+                gameEnd(false, cell, "horizontal");
             }
         }
     }
@@ -52,7 +72,7 @@ const checkEnd = function() {
         topCell.textContent === cells[cells.indexOf(topCell) + ((topSide.length - 1) * 2)].textContent) {
             console.log("diagonal left");
             gameOver = true;
-            gameEnd();
+            gameEnd(false, topCell, ("diagonal left"));
         }
     }
 
@@ -63,13 +83,13 @@ const checkEnd = function() {
         leftCell.textContent === cells[cells.indexOf(leftCell) + ((leftSide.length + 1) * 2)].textContent) {
             console.log("diagonal right");
             gameOver = true;
-            gameEnd();
+            gameEnd(false, leftCell, "diagonal right");
         }
     }
 
     if (player === 9 && gameOver === false) {
       console.log("Tie Game");
-      gameEnd();
+      gameEnd(true);
     }
 }
 
@@ -86,19 +106,6 @@ const cellClick = function(cell) {
     player++;
 
     checkEnd();
-}
-
-//make function to remove events after win or draw
-const gameEnd = function() {
-  cells[0].removeEventListener("click", cell1Clicked);
-  cells[1].removeEventListener("click", cell2Clicked);
-  cells[2].removeEventListener("click", cell3Clicked);
-  cells[3].removeEventListener("click", cell4Clicked);
-  cells[4].removeEventListener("click", cell5Clicked);
-  cells[5].removeEventListener("click", cell6Clicked);
-  cells[6].removeEventListener("click", cell7Clicked);
-  cells[7].removeEventListener("click", cell8Clicked);
-  cells[8].removeEventListener("click", cell9Clicked);
 }
 
 //This starts a new game
