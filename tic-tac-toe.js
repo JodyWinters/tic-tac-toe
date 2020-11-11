@@ -18,6 +18,26 @@ for (let section of sections) {
 
 //variable for if the game has been won
 let gameOver = false;
+
+//make function to remove events after win or draw
+const gameEnd = function(isDraw, firstCell, direction) {
+    cells[0].removeEventListener("click", cell1Clicked);
+    cells[1].removeEventListener("click", cell2Clicked);
+    cells[2].removeEventListener("click", cell3Clicked);
+    cells[3].removeEventListener("click", cell4Clicked);
+    cells[4].removeEventListener("click", cell5Clicked);
+    cells[5].removeEventListener("click", cell6Clicked);
+    cells[6].removeEventListener("click", cell7Clicked);
+    cells[7].removeEventListener("click", cell8Clicked);
+    cells[8].removeEventListener("click", cell9Clicked);
+
+    if (isDraw === true) {
+        for (cell of cells) {
+            cell.style.color = "red";
+        }
+    }
+}
+
 //This checks if the game is over
 const checkEnd = function() {
 
@@ -31,7 +51,7 @@ const checkEnd = function() {
                 cells[cells.indexOf(cell) + 3].style.backgroundColor = "#3bbbf5";
                 cells[cells.indexOf(cell) + 6].style.backgroundColor = "#3bbbf5";
                 gameOver = true;
-                gameEnd();
+                gameEnd(false, cell, "vertical",);
             }
         }
     }
@@ -46,7 +66,7 @@ const checkEnd = function() {
                 cells[cells.indexOf(cell) + 1].style.backgroundColor = "#3bbbf5";
                 cells[cells.indexOf(cell) + 2].style.backgroundColor = "#3bbbf5";
                 gameOver = true;
-                gameEnd();
+                gameEnd(false, cell, "horizontal");
             }
         }
     }
@@ -61,7 +81,7 @@ const checkEnd = function() {
             cells[cells.indexOf(topCell) + 2].style.backgroundColor = "#3bbbf5";
             cells[cells.indexOf(topCell) + 4].style.backgroundColor = "#3bbbf5";
             gameOver = true;
-            gameEnd();
+            gameEnd(false, topCell, ("diagonal left"));
         }
     }
 
@@ -75,13 +95,13 @@ const checkEnd = function() {
             cells[cells.indexOf(leftCell) + 4].style.backgroundColor = "#3bbbf5";
             cells[cells.indexOf(leftCell) + 8].style.backgroundColor = "#3bbbf5";
             gameOver = true;
-            gameEnd();
+            gameEnd(false, leftCell, "diagonal right");
         }
     }
 
     if (player === 9 && gameOver === false) {
       console.log("Tie Game");
-      gameEnd();
+      gameEnd(true);
     }
 }
 
@@ -98,19 +118,6 @@ const cellClick = function(cell) {
     player++;
 
     checkEnd();
-}
-
-//make function to remove events after win or draw
-const gameEnd = function() {
-  cells[0].removeEventListener("click", cell1Clicked);
-  cells[1].removeEventListener("click", cell2Clicked);
-  cells[2].removeEventListener("click", cell3Clicked);
-  cells[3].removeEventListener("click", cell4Clicked);
-  cells[4].removeEventListener("click", cell5Clicked);
-  cells[5].removeEventListener("click", cell6Clicked);
-  cells[6].removeEventListener("click", cell7Clicked);
-  cells[7].removeEventListener("click", cell8Clicked);
-  cells[8].removeEventListener("click", cell9Clicked);
 }
 
 //This starts a new game
