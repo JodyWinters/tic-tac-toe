@@ -27,6 +27,9 @@ const checkEnd = function() {
             if (cell.textContent === cells[cells.indexOf(cell) + topSide.length].textContent &&
             cell.textContent === cells[cells.indexOf(cell) + (topSide.length * 2)].textContent) {
                 console.log("vertical");
+                cell.style.backgroundColor = "#3bbbf5";
+                cells[cells.indexOf(cell) + 3].style.backgroundColor = "#3bbbf5";
+                cells[cells.indexOf(cell) + 6].style.backgroundColor = "#3bbbf5";
                 gameOver = true;
                 gameEnd();
             }
@@ -39,6 +42,9 @@ const checkEnd = function() {
             if (cell.textContent === cells[cells.indexOf(cell) + 1].textContent &&
             cell.textContent === cells[cells.indexOf(cell) + 2].textContent) {
                 console.log("horizontal");
+                cell.style.backgroundColor = "#3bbbf5";
+                cells[cells.indexOf(cell) + 1].style.backgroundColor = "#3bbbf5";
+                cells[cells.indexOf(cell) + 2].style.backgroundColor = "#3bbbf5";
                 gameOver = true;
                 gameEnd();
             }
@@ -46,11 +52,14 @@ const checkEnd = function() {
     }
 
     //Check for diagonal win
-    const topCell = topSide[topSide.length - 1]
+    const topCell = topSide[topSide.length - 1];
     if (topCell.textContent !== "") {
         if (topCell.textContent === cells[cells.indexOf(topCell) + (topSide.length - 1)].textContent &&
         topCell.textContent === cells[cells.indexOf(topCell) + ((topSide.length - 1) * 2)].textContent) {
             console.log("diagonal left");
+            topCell.style.backgroundColor = "#3bbbf5";
+            cells[cells.indexOf(topCell) + 2].style.backgroundColor = "#3bbbf5";
+            cells[cells.indexOf(topCell) + 4].style.backgroundColor = "#3bbbf5";
             gameOver = true;
             gameEnd();
         }
@@ -62,6 +71,9 @@ const checkEnd = function() {
         if (leftCell.textContent === cells[cells.indexOf(leftCell) + (leftSide.length + 1)].textContent &&
         leftCell.textContent === cells[cells.indexOf(leftCell) + ((leftSide.length + 1) * 2)].textContent) {
             console.log("diagonal right");
+            leftCell.style.backgroundColor = "#3bbbf5";
+            cells[cells.indexOf(leftCell) + 4].style.backgroundColor = "#3bbbf5";
+            cells[cells.indexOf(leftCell) + 8].style.backgroundColor = "#3bbbf5";
             gameOver = true;
             gameEnd();
         }
