@@ -99,7 +99,7 @@ const checkEnd = function() {
         }
     }
 
-    if (player === 9 && gameOver === false) {
+    if (turns === 9 && gameOver === false) {
       console.log("Tie Game");
       gameEnd(true);
     }
@@ -107,23 +107,35 @@ const checkEnd = function() {
 
 //This should run when an empty cell is clicked
 const cellClick = function(cell) {
-    //If player is even, write "x"
-    if (player % 2 === 0) {
-        cell.textContent = "x";
-    //If it is odd, write "o"
+    //If player is even, write the first character
+    if (turns % 2 === 0) {
+        cell.textContent = firstChar;
+    //If it is odd, write the second character
     } else {
-        cell.textContent = "o";
+        cell.textContent = secondChar;
     }
-    //Switch players
-    player++;
+    //Add one to turn
+    turns++
 
     checkEnd();
 }
 
 //This starts a new game
 const play = function() {
-    //Create a player variable that tracks which player's turn it is
-    player = 0;
+    //Create a random number, either 0 or 1
+    //If it is 0, "x" goes first
+
+    if (Math.floor(Math.random() * Math.floor(2)) === 0) {
+        firstChar = "x";
+        secondChar = "o"
+    //If it is 1, "o" goes first
+    } else {
+        firstChar = "o";
+        secondChar = "x";
+    }
+
+    //Create a turns variable that tracks the amount of turns
+    turns = 0;
 
     //Create an event listener for each column
     //Removes listeners once called
