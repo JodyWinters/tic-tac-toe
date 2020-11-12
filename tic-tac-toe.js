@@ -18,6 +18,8 @@ for (let section of sections) {
 
 //storing paragraph in a variable
 let winnerTie = document.querySelector(".winnerTie");
+//currentPlayer variable
+const currentPlayer = document.querySelector(".current-player");
 //variable for if the game has been won
 let gameOver = false;
 
@@ -36,13 +38,13 @@ const gameEnd = function(isDraw, firstCell, direction) {
     if (isDraw === true) {
         for (cell of cells) {
             cell.style.color = "red";
-            winnerTie.textContent = "Tie Game";
+            winnerTie.textContent = "Draw";
         }
-    }else if(isDraw === false && (turns % 2 === 0)) {
-      winnerTie.textContent = "Winner is: " + secondChar +"'s";
+    }else if (firstChar === "X") {
+      winnerTie.textContent = "Player 1 won! (X)";
       winnerTie.style.color = "green";
-    }else if(isDraw === false && (turns % 2 === 1)) {
-      winnerTie.textContent = "Winner is: " + firstChar +"'s";
+    }else {
+      winnerTie.textContent = "Player 2 won! (O)";
       winnerTie.style.color = "green";
     }
   }
@@ -109,9 +111,18 @@ const checkEnd = function() {
     }
 
     if (turns === 9 && gameOver === false) {
-      console.log("Tie Game");
+      gameOver = true;
 
       gameEnd(true);
+    }
+    
+    //If the game is not over, switch players
+    if (gameOver === false) {
+        if ((turns + player) % 2 === 0) {
+            currentPlayer.textContent = "Player 1's turn";
+        } else {
+            currentPlayer.textContent = "Player 2's turn";
+        }
     }
 }
 
@@ -125,7 +136,7 @@ const cellClick = function(cell) {
         cell.textContent = secondChar;
     }
     //Add one to turn
-    turns++
+    turns++;
 
     checkEnd();
 }
@@ -138,10 +149,16 @@ const play = function() {
     if (Math.floor(Math.random() * Math.floor(2)) === 0) {
         firstChar = "X";
         secondChar = "O"
+        //Variable to track which player's turn it is
+        player = 0;
+        currentPlayer.textContent = "Player 1 goes first (X)"
     //If it is 1, "o" goes first
     } else {
         firstChar = "O";
         secondChar = "X";
+        //Variable to track which player's turn it is
+        player = 1;
+        currentPlayer.textContent = "Player 2 goes first (O)"
     }
 
     //Create a turns variable that tracks the amount of turns
