@@ -81,8 +81,8 @@ const checkEnd = function() {
             cell.textContent === cells[cells.indexOf(cell) + (topSide.length * 2)].textContent) {
                 console.log("vertical");
                 cell.style.backgroundColor = "#3bbbf5";
-                cells[cells.indexOf(cell) + 3].style.backgroundColor = "#3bbbf5";
-                cells[cells.indexOf(cell) + 6].style.backgroundColor = "#3bbbf5";
+                window.setTimeout(() => {cells[cells.indexOf(cell) + 3].style.backgroundColor = "#3bbbf5";}, 250);
+                window.setTimeout(() => {cells[cells.indexOf(cell) + 6].style.backgroundColor = "#3bbbf5";}, 500);
                 gameOver = true;
                 gameEnd(false);
             }
@@ -96,8 +96,8 @@ const checkEnd = function() {
             cell.textContent === cells[cells.indexOf(cell) + 2].textContent) {
                 console.log("horizontal");
                 cell.style.backgroundColor = "#3bbbf5";
-                cells[cells.indexOf(cell) + 1].style.backgroundColor = "#3bbbf5";
-                cells[cells.indexOf(cell) + 2].style.backgroundColor = "#3bbbf5";
+                window.setTimeout(() => {cells[cells.indexOf(cell) + 1].style.backgroundColor = "#3bbbf5";}, 250);
+                window.setTimeout(() => {cells[cells.indexOf(cell) + 2].style.backgroundColor = "#3bbbf5";}, 500);
                 gameOver = true;
                 gameEnd(false);
             }
@@ -111,8 +111,8 @@ const checkEnd = function() {
         topCell.textContent === cells[cells.indexOf(topCell) + ((topSide.length - 1) * 2)].textContent) {
             console.log("diagonal left");
             topCell.style.backgroundColor = "#3bbbf5";
-            cells[cells.indexOf(topCell) + 2].style.backgroundColor = "#3bbbf5";
-            cells[cells.indexOf(topCell) + 4].style.backgroundColor = "#3bbbf5";
+            window.setTimeout(() => {cells[cells.indexOf(topCell) + 2].style.backgroundColor = "#3bbbf5";}, 250);
+            window.setTimeout(() => {cells[cells.indexOf(topCell) + 4].style.backgroundColor = "#3bbbf5";}, 500);
             gameOver = true;
             gameEnd(false);
         }
@@ -125,8 +125,8 @@ const checkEnd = function() {
         leftCell.textContent === cells[cells.indexOf(leftCell) + ((leftSide.length + 1) * 2)].textContent) {
             console.log("diagonal right");
             leftCell.style.backgroundColor = "#3bbbf5";
-            cells[cells.indexOf(leftCell) + 4].style.backgroundColor = "#3bbbf5";
-            cells[cells.indexOf(leftCell) + 8].style.backgroundColor = "#3bbbf5";
+            window.setTimeout(() => {cells[cells.indexOf(leftCell) + 4].style.backgroundColor = "#3bbbf5";}, 250);
+            window.setTimeout(() => {cells[cells.indexOf(leftCell) + 8].style.backgroundColor = "#3bbbf5";}, 500);
             gameOver = true;
             gameEnd(false);
         }

@@ -69,3 +69,7 @@ button {
   margin-right: auto;
   margin-top: 15px;
 }
+
+.cell {
+  transition: background-color 1s;
+}
