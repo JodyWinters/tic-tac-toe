@@ -26,6 +26,21 @@ const currentPlayer = document.querySelector(".current-player");
 //variable for if the game has been won
 let gameOver = false;
 
+const resetClicked = function() {
+    //Hide the restart button
+    restart.style.display = "none";
+
+    for (cell of cells) {
+        cell.textContent = "";
+        cell.style.backgroundColor = "inherit";
+        cell.style.color = "inherit";
+        gameOver = false;
+    }
+
+    restart.removeEventListener("click", resetClicked);
+    play();
+}
+
 //make function to remove events after win or draw
 const gameEnd = function(isDraw, firstCell, direction) {
     cells[0].removeEventListener("click", cell1Clicked);
@@ -221,18 +236,7 @@ const play = function() {
     });
 
     //Add event listener to restart button
-    restart.addEventListener("click", () => {
-        //Hide the restart button
-        restart.style.display = "none";
-
-        for (cell of cells) {
-            cell.textContent = "";
-            cell.style.backgroundColor = "inherit";
-            cell.style.color = "inherit";
-            gameOver = false;
-        }
-        play();
-    });
+    restart.addEventListener("click", resetClicked)
 }
 
 play();
