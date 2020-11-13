@@ -1,3 +1,6 @@
+//Restart button
+const restart = document.querySelector("button");
+
 //Array with all of the cells
 const cells = Array.from(document.querySelectorAll("div"));
 
@@ -35,18 +38,22 @@ const gameEnd = function(isDraw, firstCell, direction) {
     cells[7].removeEventListener("click", cell8Clicked);
     cells[8].removeEventListener("click", cell9Clicked);
 
+    //If the game is a draw, make the characters red
     if (isDraw === true) {
         for (cell of cells) {
             cell.style.color = "red";
             winnerTie.textContent = "Draw";
         }
-    }else if (firstChar === "X") {
+    //Otherwise, show which player won
+    } else if (firstChar === "X") {
       winnerTie.textContent = "Player 1 won! (X)";
       winnerTie.style.color = "green";
-    }else {
+    } else {
       winnerTie.textContent = "Player 2 won! (O)";
       winnerTie.style.color = "green";
     }
+
+    restart.style.display = "block";
   }
 
 //This checks if the game is over
@@ -128,6 +135,7 @@ const checkEnd = function() {
 
 //This should run when an empty cell is clicked
 const cellClick = function(cell) {
+    console.log(turns);
     //If player is even, write the first character
     if (turns % 2 === 0) {
         cell.textContent = firstChar;
@@ -210,6 +218,20 @@ const play = function() {
     cells[8].addEventListener("click", cell9Clicked =() => {
         cells[8].removeEventListener("click", cell9Clicked);
         cellClick(cells[8]);
+    });
+
+    //Add event listener to restart button
+    restart.addEventListener("click", () => {
+        //Hide the restart button
+        restart.style.display = "none";
+
+        for (cell of cells) {
+            cell.textContent = "";
+            cell.style.backgroundColor = "inherit";
+            cell.style.color = "inherit";
+            gameOver = false;
+        }
+        play();
     });
 }
 
