@@ -10,13 +10,13 @@ html {
 
 h1, h2 {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 main {
   display: block;
-  width: 495px;
-  height: 495px;
+  width: 450px;
+  height: 450px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 15px;
@@ -24,7 +24,7 @@ main {
 
 section {
   display: flex;
-  height: 165px;
+  height: 150px;
 }
 
 #cell1, #cell2, #cell3, #cell4, #cell5, #cell6 {
@@ -33,8 +33,8 @@ section {
 
 div {
   display: flex;
-  height: 165px;
-  width: 165px;
+  height: 150px;
+  width: 150px;
   justify-content: center;
   align-items: center;
   font-size: 130px;
@@ -64,7 +64,7 @@ button {
 .current-player {
   font-size: 20px;
   display: block;
-  width: 495px;
+  width: 450px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 15px;

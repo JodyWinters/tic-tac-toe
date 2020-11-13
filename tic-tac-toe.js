@@ -42,7 +42,7 @@ const resetClicked = function() {
 }
 
 //make function to remove events after win or draw
-const gameEnd = function(isDraw, firstCell, direction) {
+const gameEnd = function(isDraw) {
     cells[0].removeEventListener("click", cell1Clicked);
     cells[1].removeEventListener("click", cell2Clicked);
     cells[2].removeEventListener("click", cell3Clicked);
@@ -84,7 +84,7 @@ const checkEnd = function() {
                 cells[cells.indexOf(cell) + 3].style.backgroundColor = "#3bbbf5";
                 cells[cells.indexOf(cell) + 6].style.backgroundColor = "#3bbbf5";
                 gameOver = true;
-                gameEnd(false, cell, "vertical",);
+                gameEnd(false);
             }
         }
     }
@@ -99,7 +99,7 @@ const checkEnd = function() {
                 cells[cells.indexOf(cell) + 1].style.backgroundColor = "#3bbbf5";
                 cells[cells.indexOf(cell) + 2].style.backgroundColor = "#3bbbf5";
                 gameOver = true;
-                gameEnd(false, cell, "horizontal");
+                gameEnd(false);
             }
         }
     }
@@ -114,7 +114,7 @@ const checkEnd = function() {
             cells[cells.indexOf(topCell) + 2].style.backgroundColor = "#3bbbf5";
             cells[cells.indexOf(topCell) + 4].style.backgroundColor = "#3bbbf5";
             gameOver = true;
-            gameEnd(false, topCell, ("diagonal left"));
+            gameEnd(false);
         }
     }
 
@@ -128,7 +128,7 @@ const checkEnd = function() {
             cells[cells.indexOf(leftCell) + 4].style.backgroundColor = "#3bbbf5";
             cells[cells.indexOf(leftCell) + 8].style.backgroundColor = "#3bbbf5";
             gameOver = true;
-            gameEnd(false, leftCell, "diagonal right");
+            gameEnd(false);
         }
     }
 
