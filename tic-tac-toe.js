@@ -36,7 +36,7 @@ const resetClicked = function() {
         cell.style.color = "inherit";
         gameOver = false;
     }
-
+    winnerTie.textContent = "";
     restart.removeEventListener("click", resetClicked);
     play();
 }
@@ -137,7 +137,7 @@ const checkEnd = function() {
 
       gameEnd(true);
     }
-    
+
     //If the game is not over, switch players
     if (gameOver === false) {
         if ((turns + player) % 2 === 0) {

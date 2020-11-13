@@ -10,7 +10,7 @@ html {
 
 h1, h2 {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 main {
@@ -22,7 +22,7 @@ main {
   margin-top: 15px;
 }
 
-.firstRow, .secondRow, .thirdRow {
+section {
   display: flex;
   height: 165px;
 }
@@ -59,4 +59,13 @@ button {
 
 button {
   display: none;
+}
+
+.current-player {
+  font-size: 20px;
+  display: block;
+  width: 495px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
 }
